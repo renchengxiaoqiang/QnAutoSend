@@ -1,0 +1,36 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Width="400" 
+        Height="350"
+        x:Class="QnAutoSend.Windows.EditWindow"
+        xmlns:vm="using:QnAutoSend.ViewModels"
+        x:DataType="vm:EditWindowViewModel"
+        Title="编辑">
+    <Grid RowDefinitions="*,50">
+        <StackPanel Margin="10">
+            <TextBox Watermark="店铺名" Margin="0,5" Text="{Binding Product.ShopName}" ></TextBox>
+            
+            <TextBox Watermark="商品名" Margin="0,5" Text="{Binding Product.ProductName}"></TextBox>
+            
+            <TextBox Watermark="商品ID" Margin="0,5" Text="{Binding Product.ProductId}"></TextBox>
+            
+            <TextBox Watermark="下载链接" Margin="0,5" Text="{Binding Product.DownloadUrl}"></TextBox>
+            
+            <TextBox Watermark="卡密" Margin="0,5" MaxHeight="100" MinLines="5" AcceptsReturn="True" Text="{Binding Product.ActivateCodes}"></TextBox>
+        </StackPanel>
+        <UniformGrid Grid.Row="1" Columns="2">
+            <Button Width="100" Height="30"
+                    HorizontalAlignment="Center"
+                    HorizontalContentAlignment="Center" Content="保存" 
+                    Command="{Binding SaveButtonClickCommand}" 
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+            <Button Width="100" Height="30"
+                    HorizontalContentAlignment="Center" Content="取消" 
+                    HorizontalAlignment="Center"
+                    Command="{Binding CancelButtonClickCommand}"
+                    CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+        </UniformGrid>
+    </Grid>
+</Window>
